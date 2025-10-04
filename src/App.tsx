@@ -239,8 +239,10 @@ export const App: React.FC = () => {
       const updatedTodo = await updateTodoTitle(id, data);
 
       setTodos(prev => prev.map(t => (t.id === id ? updatedTodo : t)));
-    } catch {
+    } catch (err) {
       showError('Unable to update a todo');
+
+      throw err;
     } finally {
       setLoadingTodos(prev => ({ ...prev, [id]: false }));
     }

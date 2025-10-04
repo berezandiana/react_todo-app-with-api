@@ -59,9 +59,10 @@ export const TodoItem: React.FC<TodoItemProps> = ({
 
     try {
       await updateTodo(todo.id, { title: trimmedTitle });
-    } finally {
+
+      setEditedTitle(trimmedTitle);
       setIsEditing(false);
-    }
+    } catch (err) {}
   };
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
